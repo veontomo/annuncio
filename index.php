@@ -77,13 +77,13 @@ foreach ($ads as $ad) {
 		$mail = new PHPMailer;
 
 		$mail->IsSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup server
+		$mail->Host = 'mail.veontomo.com';  // Specify main and backup server
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'jswan';                            // SMTP username
-		$mail->Password = 'secret';                           // SMTP password
+		$mail->Username = 'daemon';                            // SMTP username
+		$mail->Password = 'jY1Hg&@@lkjjh-1.(()';                           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 
-		$mail->From = 'from@example.com';
+		$mail->From = 'daemon@veontomo.com';
 		$mail->FromName = 'Mailer';
 		$mail->AddAddress(TARGETEMAIL, 'Andrea');  // Add a recipient
 
@@ -116,5 +116,3 @@ foreach ($ads as $ad) {
 
 
 ?>
-
-
