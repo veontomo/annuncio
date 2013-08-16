@@ -76,17 +76,24 @@ foreach ($ads as $ad) {
 
 		$mail = new PHPMailer;
 
-		$mail->IsSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'mail.veontomo.com';  // Specify main and backup server
-		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'daemon';                            // SMTP username
-		$mail->Password = 'jY1Hg&@@lkjjh-1.(()';                           // SMTP password
-		$mail->SMTPSecure = 'ssl'; 
-		$mail->Port = 587;
+		// $mail->IsSMTP();                                      // Set mailer to use SMTP
+		// $mail->Host = 'mail.veontomo.com';  // Specify main and backup server
+		// $mail->SMTPAuth = true;                               // Enable SMTP authentication
+		// $mail->Username = 'daemon';                            // SMTP username
+		// $mail->Password = 'jY1Hg&@@lkjjh-1.(()';                           // SMTP password
+		// // $mail->SMTPSecure = 'ssl'; 
+		// $mail->Port = 587;
+
+	
+		$mail->Mailer = "mail";
+		$mail->IsHTML(true);
+		$mail->Host = 'mail.veontomo.com';
+		$mail->Port = 25;
+
 
 		$mail->From = 'daemon@veontomo.com';
 		$mail->FromName = 'Mailer';
-		$mail->AddAddress(TARGETEMAIL, 'Andrea');  // Add a recipient
+		$mail->AddAddress(TARGETEMAIL);  // Add a recipient
 
 		$mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 		$mail->IsHTML(true);                                  // Set email format to HTML
