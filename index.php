@@ -82,7 +82,7 @@ foreach ($ads as $ad) {
 		$mail->Username = 'daemon';                            // SMTP username
 		$mail->Password = 'jY1Hg&@@lkjjh-1.(()';                           // SMTP password
 		$mail->SMTPSecure = 'ssl'; 
-		$mail->Port = 465;
+		$mail->Port = 587;
 
 		$mail->From = 'daemon@veontomo.com';
 		$mail->FromName = 'Mailer';
