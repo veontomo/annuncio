@@ -81,7 +81,8 @@ foreach ($ads as $ad) {
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
 		$mail->Username = 'daemon';                            // SMTP username
 		$mail->Password = 'jY1Hg&@@lkjjh-1.(()';                           // SMTP password
-		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
+		$mail->SMTPSecure = 'ssl'; 
+		$mail->Port = 465;
 
 		$mail->From = 'daemon@veontomo.com';
 		$mail->FromName = 'Mailer';
