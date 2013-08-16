@@ -3,6 +3,8 @@
 define('TIMESPAN', 60*60*5);
 define('SOURCEURL', "http://www.subito.it/annunci-lazio/vendita/offerte-lavoro/");
 define('BASEURL', "http://www.subito.it/");
+define('TARGETEMAIL', 'veontomo@gmail.com');
+
 
 $keywords = array("php", "programmatore", "ruby", "rails", "ror", "html", "css", "promoter");
 
@@ -71,11 +73,39 @@ foreach ($ads as $ad) {
 	if($now - strtotime($dateFormatted) < TIMESPAN && $isInteresting){
 		 // echo ": ", $description, " ", $adLinks, PHP_EOL;
 		require 'class.phpmailer.php';
-		 if(mail("veontomo@gmail.com", "annuncio di lavoro interessante", $description ."\n". $adLinks)){
-		 	echo "mail is sent";
-		 }else{
-		 	echo "mail is not sent";
-		 };
+
+		$mail = new PHPMailer;
+
+		$mail->IsSMTP();                                      // Set mailer to use SMTP
+		$mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup server
+		$mail->SMTPAuth = true;                               // Enable SMTP authentication
+		$mail->Username = 'jswan';                            // SMTP username
+		$mail->Password = 'secret';                           // SMTP password
+		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
+
+		$mail->From = 'from@example.com';
+		$mail->FromName = 'Mailer';
+		$mail->AddAddress(TARGETEMAIL, 'Andrea');  // Add a recipient
+
+		$mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+		$mail->IsHTML(true);                                  // Set email format to HTML
+
+		$mail->Subject = 'Nuovo annuncio';
+		$mail->Body    = "$description<br />$adLinks";
+		$mail->AltBody = "$description\n$adLinks";;
+
+		if(!$mail->Send()) {
+		   echo 'Message could not be sent.';
+		   echo 'Mailer Error: ' . $mail->ErrorInfo;
+		   exit;
+		}
+
+		echo 'Message has been sent';
+		 // if(mail("veontomo@gmail.com", "annuncio di lavoro interessante", $description ."\n". $adLinks)){
+		 // 	echo "mail is sent";
+		 // }else{
+		 // 	echo "mail is not sent";
+		 // };
 
 	}
 	// else{
